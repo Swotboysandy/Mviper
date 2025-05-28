@@ -6,10 +6,13 @@ import DailyQuote from '@/components/DailyQuote';
 import MediaPlayer from '@/components/MediaPlayer';
 import StoryCard from '@/components/StoryCard';
 import { Theme } from '@/constants/Theme';
+import Button from '@/components/Button'; // Add this import
+import { useRouter } from 'expo-router';   // Add this import
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
-  
+  const router = useRouter(); // Add this
+
   return (
     <View 
       style={[
@@ -20,6 +23,18 @@ export default function HomeScreen() {
         }
       ]}
     >
+      {/* Add Login/Register buttons here */}
+      <View style={{ flexDirection: 'row', justifyContent: 'flex-end', margin: 16 }}>
+        <Button
+          title="Login"
+          style={{ marginRight: 8 }}
+          onPress={() => router.push('/login')}
+        />
+        <Button
+          title="Register"
+          onPress={() => router.push('/register')}
+        />
+      </View>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
